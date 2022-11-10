@@ -148,3 +148,160 @@ Processing by UsersController#create as */*
 Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1605)
 
 
+Started GET "/users" for ::1 at 2022-11-09 17:09:21 -0800
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development
+You have 1 pending migration:
+20221110004034_create_users.rb:
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (9.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221110004034)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221110004034"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-10 01:09:49.985680"], ["updated_at", "2022-11-10 01:09:49.985680"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for ::1 at 2022-11-09 17:10:07 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 2.1ms | Allocations: 3401)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "vivian"], ["email", "vivian123@gmail.com"], ["created_at", "2022-11-10 01:13:15.915471"], ["updated_at", "2022-11-10 01:13:15.915471"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kaushal"], ["email", "kaushal567@gmail.com"], ["created_at", "2022-11-10 01:13:15.919433"], ["updated_at", "2022-11-10 01:13:15.919433"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tylor"], ["email", "tylor899@gmail.com"], ["created_at", "2022-11-10 01:13:15.920891"], ["updated_at", "2022-11-10 01:13:15.920891"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Darren"], ["email", "darren000@gmail.com"], ["created_at", "2022-11-10 01:13:15.922296"], ["updated_at", "2022-11-10 01:13:15.922296"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for ::1 at 2022-11-09 17:13:25 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 5.3ms | Allocations: 7354)
+
+
+Started GET "/users/100" for ::1 at 2022-11-09 17:14:11 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+Redirected to http://localhost:3000/users
+Completed 302 Found in 29ms (ActiveRecord: 0.6ms | Allocations: 11712)
+
+
+Started GET "/users" for ::1 at 2022-11-09 17:14:11 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1157)
+
+
+Started GET "/users/2" for ::1 at 2022-11-09 17:14:25 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+Completed 200 OK in 23ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 695)
+
+
+Started PATCH "/users/2" for ::1 at 2022-11-09 17:21:12 -0800
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"superman", "email"=>"superpower@gmail.com"}, "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "superman"], ["email", "superpower@gmail.com"], ["updated_at", "2022-11-10 01:21:12.272093"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 8.2ms | Allocations: 10894)
+
+
+Started GET "/users" for ::1 at 2022-11-09 17:21:52 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.3ms | Allocations: 1130)
+
+
+Started DELETE "/users/100" for ::1 at 2022-11-09 17:26:07 -0800
+
+AbstractController::ActionNotFound - The action 'delete' could not be found for UsersController:
+
+Started DELETE "/users/100" for ::1 at 2022-11-09 17:26:57 -0800
+Processing by UsersController#delete as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `delete'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 4.6ms | Allocations: 4847)
+
+
+
+NoMethodError - undefined method `destroy' for nil:NilClass
+        user.destroy
+            ^^^^^^^^:
+  app/controllers/users_controller.rb:41:in `delete'
+
+Started DELETE "/users/100" for ::1 at 2022-11-09 17:28:14 -0800
+Processing by UsersController#delete as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `delete'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.9ms | Allocations: 4752)
+
+
+
+NoMethodError - undefined method `destroy' for nil:NilClass
+        user.destroy
+            ^^^^^^^^:
+  app/controllers/users_controller.rb:41:in `delete'
+
+Started DELETE "/users/100" for ::1 at 2022-11-09 17:29:52 -0800
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `destroy'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.5ms | Allocations: 4754)
+
+
+
+NoMethodError - undefined method `destroy' for nil:NilClass
+        user.destroy
+            ^^^^^^^^:
+  app/controllers/users_controller.rb:41:in `destroy'
+
+Started DELETE "/users/100" for ::1 at 2022-11-09 17:31:03 -0800
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.8ms | Allocations: 4759)
+
+
+
+NoMethodError - undefined method `delete' for nil:NilClass
+        user.delete
+            ^^^^^^^:
+  app/controllers/users_controller.rb:41:in `destroy'
+

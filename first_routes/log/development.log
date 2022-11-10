@@ -66,3 +66,85 @@ Processing by UsersController#show as */*
 Completed 200 OK in 2ms (Views: 0.3ms | Allocations: 126)
 
 
+  [1m[35m (93.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221110004034)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221110004034"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-10 00:41:45.380317"], ["updated_at", "2022-11-10 00:41:45.380317"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (27.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vivian"], ["email", "vivan345@gmail.com"], ["created_at", "2022-11-10 00:45:35.694189"], ["updated_at", "2022-11-10 00:45:35.694189"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (21.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kaushal"], ["email", "kaushal857@gmail.com"], ["created_at", "2022-11-10 00:46:17.315919"], ["updated_at", "2022-11-10 00:46:17.315919"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (6.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Taylor"], ["email", "taytay123@gmail.com"], ["created_at", "2022-11-10 00:47:15.532743"], ["updated_at", "2022-11-10 00:47:15.532743"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for ::1 at 2022-11-09 16:49:24 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (7.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:6:in `index'
+Completed 200 OK in 140ms (Views: 33.9ms | ActiveRecord: 101.6ms | Allocations: 6194)
+
+
+Started POST "/users" for ::1 at 2022-11-09 16:54:39 -0800
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"derik", "email"=>"lizbot@gmail.com"}
+Completed 400 Bad Request in 19ms (ActiveRecord: 0.0ms | Allocations: 1558)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:10:in `create'
+
+Started POST "/users" for ::1 at 2022-11-09 16:55:17 -0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"derik", "email"=>"lizbot@gmail.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (29.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "derik"], ["email", "lizbot@gmail.com"], ["created_at", "2022-11-10 00:55:17.582641"], ["updated_at", "2022-11-10 00:55:17.582641"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 301ms (Views: 0.7ms | ActiveRecord: 285.2ms | Allocations: 5784)
+
+
+Started POST "/users" for ::1 at 2022-11-09 16:56:00 -0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"derik"}}
+Completed 422 Unprocessable Entity in 112ms (ActiveRecord: 0.0ms | Allocations: 3770)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Email can't be blank:
+  app/controllers/users_controller.rb:12:in `create'
+
+Started POST "/users" for ::1 at 2022-11-09 16:58:06 -0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"derik", "email"=>"lizbot@gmail.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (37.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "derik"], ["email", "lizbot@gmail.com"], ["created_at", "2022-11-10 00:58:06.682786"], ["updated_at", "2022-11-10 00:58:06.682786"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (29.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 152ms (Views: 0.2ms | ActiveRecord: 141.6ms | Allocations: 4639)
+
+
+Started POST "/users" for ::1 at 2022-11-09 16:58:16 -0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"derik"}}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 1605)
+
+
